@@ -29,7 +29,5 @@ def simple_function2():
 
 if __name__ == "__main__":
     for i in range(2):
-        a = simple_function()
-        print(a)
-        b = simple_function2()
-        print(b)
+        print(simple_function())
+        print(simple_function2())
