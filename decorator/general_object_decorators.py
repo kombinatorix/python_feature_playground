@@ -113,7 +113,7 @@ def get_subclasses_of_function(func):
     """
 
     def change_of_behavior():
-        print(f"{func.__class__.__subclasses__()=}")
+        print(f"{func.__subclasses__=}")
         func()
 
     return change_of_behavior
@@ -122,6 +122,23 @@ def get_subclasses_of_function(func):
 @get_subclasses_of_function
 def func_subclasses():
     print('"func_subclasses" is executed')
+
+
+def get_dir_of_function(func):
+    """
+    decorator for printing __name__ of a function
+    """
+
+    def change_of_behavior():
+        print(f"{func.__dir__()=}")
+        func()
+
+    return change_of_behavior
+
+
+@get_dir_of_function
+def func_subclasses():
+    print('"func_dir" is executed')
 
 
 if __name__ == "__main__":
