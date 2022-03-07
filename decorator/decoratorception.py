@@ -77,3 +77,27 @@ def function():
 
 
 function()
+
+
+def sort_decorators(list_of_decorators):
+    def wrapper_looking_like_decorator(func):
+        @wraps(func)
+        def wrapper():
+            print("wrapper function of sort decorators")
+            tmp_func = func
+            list_of_decorators.sort(key=lambda x: x.__name__)
+            for dec in list_of_decorators:
+                tmp_func = dec(tmp_func)
+            tmp_func()
+
+        return wrapper
+
+    return wrapper_looking_like_decorator
+
+
+@sort_decorators([decorator2, decorator3, decorator1])
+def function2():
+    print("function2 call")
+
+
+function2()
